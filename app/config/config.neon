@@ -1,0 +1,34 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+services:
+	router: App\RouterFactory::createRouter
+	bootstrapRenderer: Tomaj\Form\Renderer\BootstrapRenderer
+
+	# Forms
+	- App\Components\FormFactory
+	- App\Components\IExampleFormFactory
+	- App\Components\ExampleFormWithFactory
+
+extensions:
+	console: Kdyby\Console\DI\ConsoleExtension
+	events: Kdyby\Events\DI\EventsExtension
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension
+	translation: Kdyby\Translation\DI\TranslationExtension
+
+translation:
+#	default: cs
+#	whitelist: [cs, en]
+	resolvers:
+			header: off
